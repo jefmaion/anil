@@ -24,23 +24,25 @@
 					<div class="section-body-">
 
 						<div class="row">
-							<div class="col-3">
-								<div class="card card-primary">
+							<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  d-flex">
+								<div class="card card-primary flex-fill">
 									<div class="card-header">
-										<h4>Informações do Cliente</h4>
+										<h4>Logotipo</h4>
 									</div>
 									<div class="card-body text-center">
 										<div class="suser-item">
-											<a href="#" id="change-photo">
-												<img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo ) ?>" class="img-fluid">
-											</a>
+
+
+											<img alt="image" heighdt="200px" src="<?= imageProfile(($company) ? $company->photo : null) ?>" class="mb-4 img-fluid">
+
 											<div class="user-details">
-												
+
 												<div class="user-cta">
-													<button class="btn btn-primary following-btn" data-toggle="modal" data-target="#modal-company">Alterar</button>
+													<!-- <button class="btn btn-primary following-btn" data-toggle="modal" data-target="#modal-company">Alterar Imagem</button> -->
+													<button class="btn btn-primary following-btn" id="change-photo">Alterar Imagem</button>
 												</div>
 
-												<form enctype="multipart/form-data" action="<?= ($company) ? base_url('admin/company/'.$company->id.'/update') : base_url('admin/company/create') ;  ?>" method="post">
+												<form enctype="multipart/form-data" action="<?= ($company) ? base_url('admin/company/' . $company->id . '/update') : base_url('admin/company/create');  ?>" method="post">
 													<input type="file" name="photo" id="photo" class="d-none">
 												</form>
 											</div>
@@ -49,88 +51,88 @@
 								</div>
 							</div>
 
-							<div class="col">
+							<div class="col d-flex">
 
-							<div class="row">
-							<div class="col-6">
-								<div class="card card-primary">
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h1><?= $count ?></h1>
-											</div>
-											<div class="col text-right">
-												<h1>
-													<i class="fa fa-folder" aria-hidden="true"></i>
-												</h1>
+								<div class="row flex-fill">
+									<div class="col-6">
+										<div class="card card-primary">
+											<div class="card-body">
+												<div class="row">
+													<div class="col">
+														<h1><?= $count ?></h1>
+													</div>
+													<div class="col text-right">
+														<h1>
+															<i class="fa fa-folder" aria-hidden="true"></i>
+														</h1>
+													</div>
+												</div>
+												<p>Pasta(s) criada(s)</p>
+
 											</div>
 										</div>
-										<p>Pasta(s) criada(s)</p>
-
 									</div>
-								</div>
-							</div>
 
-							<div class="col-6">
-								<div class="card card-primary">
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h1><?= $files ?></h1>
-											</div>
-											<div class="col text-right">
-												<h1>
-													<i class="fa fa-file    "></i>
-												</h1>
+									<div class="col-6">
+										<div class="card card-primary">
+											<div class="card-body">
+												<div class="row">
+													<div class="col">
+														<h1><?= $files ?></h1>
+													</div>
+													<div class="col text-right">
+														<h1>
+															<i class="fa fa-file    "></i>
+														</h1>
+													</div>
+												</div>
+												<p>Arquivo(s)</p>
 											</div>
 										</div>
-										<p>Arquivo(s)</p>
 									</div>
-								</div>
-							</div>
 
-							<div class="col-6">
-								<div class="card card-primary">
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h1><?= $downloads ?></h1>
-											</div>
-											<div class="col text-right">
-												<h1>
-													<i class="fa fa-download    "></i>
-												</h1>
+									<div class="col-6 d-flex">
+										<div class="card card-primary flex-fill">
+											<div class="card-body">
+												<div class="row">
+													<div class="col">
+														<h1><?= $downloads ?></h1>
+													</div>
+													<div class="col text-right">
+														<h1>
+															<i class="fa fa-download    "></i>
+														</h1>
+													</div>
+												</div>
+												<p>Downloads</p>
 											</div>
 										</div>
-										<p>Downloads</p>
 									</div>
-								</div>
-							</div>
 
-							<div class="col-6">
-								<div class="card card-primary">
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h4><?= formatBytes($size) ?></h4>
-											</div>
-											<div class="col text-right">
-												<h1>
-													<i class="fa fa-chart-pie    "></i>
-												</h1>
+									<div class="col-6 d-flex">
+										<div class="card card-primary flex-fill">
+											<div class="card-body">
+												<div class="row">
+													<div class="col">
+														<h4><?= formatBytes($size) ?></h4>
+													</div>
+													<div class="col text-right">
+														<h1>
+															<i class="fa fa-chart-pie    "></i>
+														</h1>
+													</div>
+												</div>
+												<p>Espaço Utilizado</p>
+
 											</div>
 										</div>
-										<p>Espaço Utilizado</p>
-
 									</div>
 								</div>
+
 							</div>
 						</div>
 
-							</div>
-						</div>
 
-						
 
 
 						<!-- add content here -->
@@ -199,13 +201,12 @@
 	<script src="<?= base_url('public/template/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') ?>"></script>
 	<script src="<?= base_url('public/js/admin.js?t=' . date('s')) ?>"></script>
 	<script>
-
-		$('#change-photo').click(function (e) { 
+		$('#change-photo').click(function(e) {
 			e.preventDefault();
 			$('#photo').click();
 		});
 
-		$('#photo').change(function (e) { 
+		$('#photo').change(function(e) {
 			e.preventDefault();
 			$(this).closest('form').submit();
 		});
@@ -268,11 +269,11 @@
 		</div>
 	</div>
 
-		<!-- Modal -->
-		<div class="modal fade" id="modal-company" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<!-- Modal -->
+	<div class="modal fade" id="modal-company" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<form action="<?= ($company) ? base_url('admin/company/'.$company->id.'/update') : base_url('admin/company/create') ;  ?>" method="post">
+				<form action="<?= ($company) ? base_url('admin/company/' . $company->id . '/update') : base_url('admin/company/create');  ?>" method="post">
 					<div class="modal-header">
 						<h5 class="modal-title">Dados do Cliente</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -284,8 +285,8 @@
 						<input type="text" class="form-control" name="name" value="<?= ($company) ? $company->name : '' ?>" id="" aria-describedby="helpId" placeholder="">
 					</div>
 					<div class="modal-footer">
-						
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">
+
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">
 							<i class="fa fa-times" aria-hidden="true"></i>
 							Fechar
 						</button>

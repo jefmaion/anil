@@ -16,6 +16,23 @@ function formatBytes($bytes, $precision = 2) {
     return round($bytes / (pow(1024, $exp)), $precision).' '.$unit[$exp];
 }
 
+function imageProfile($image, $default='no-photo.png') {
+    
+    $dir = 'public/img/';
+
+    if(!$image) {
+        $image = $dir . 'no-photo.png';
+    }
+
+    $image = $dir . $image;
+    
+    if(!file_exists($image)) {
+        $image = $dir . 'no-photo.png';
+    }
+
+
+    return base_url($image);
+}
 
 function deleteButton($id, $route) {
 

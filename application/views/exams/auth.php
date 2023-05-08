@@ -19,22 +19,20 @@
   <div id="app">
     <section class="section">
       <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h4>Exames</h4>
-              </div>
+        <div class="row align-items-center vh-100">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+            <div class="card">
+
               <div class="card-body">
-                <?php if($company->photo) : ?>
-                    <img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo ) ?>" class="img-fluid mx-auto d-block">
-                <?php  endif; ?>
+                <?php if ($company->photo) : ?>
+                  <img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo) ?>" class="img-fluid mx-auto d-block">
+                <?php endif; ?>
 
                 <br>
-              
+
                 <form method="POST" action="<?= base_url('exames/auth') ?>" class="needs-validation" novalidate="">
 
-                <div class="form-group">
+                  <div class="form-group">
                     <label for="email">Usuário</label>
                     <input id="email" type="folder" class="form-control" value="<?= $this->input->get('usr') ?>" name="folder" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
@@ -62,19 +60,19 @@
                     </div>
                   </div> -->
 
-				  <div class="text-center">
-				  <?php $this->load->view('template/parts/alerts') ?>
-				  </div>
-				  
+                  <div class="text-center">
+                    <?php $this->load->view('template/parts/alerts') ?>
+                  </div>
+
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Login
+                      Acessar Exames
                     </button>
                   </div>
                 </form>
 
-				
+
 
               </div>
             </div>

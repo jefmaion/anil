@@ -18,6 +18,17 @@ class CompanyController extends CI_Controller {
 
         $data = $this->input->post();
 
+        if(isset($_FILES['photo'])) {
+            $config['upload_path']          = 'public/img/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('photo'))
+            {
+                $file = $this->upload->data();
+                $data['photo'] = $file['file_name'];
+            }
+        }
+
         $this->company->create($data);
 
         return redirect('admin');
@@ -32,11 +43,15 @@ class CompanyController extends CI_Controller {
 
         if(isset($_FILES['photo'])) {
 
-            $photo = 'public/img/' . $company->photo;
+            if($company) {
+                $photo = 'public/img/' . $company->photo;
 
-            if(file_exists($photo)) {
-                unlink($photo);
+                if(file_exists($photo)) {
+                    unlink($photo);
+                }
             }
+
+           
 
             
 
