@@ -1,0 +1,10 @@
+.navbar {
+    left: 0px !important;
+}
+.main-content {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 130px;
+    width: 100%;
+    position: relative;
+}
