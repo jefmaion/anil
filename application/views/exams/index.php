@@ -21,7 +21,19 @@
 				<section class="section-">
 					<div class="section-body-">
 
-						
+					<div class="card card-primary">
+							
+							<div class="card-body">
+							<?php //echo $error;?>
+							<?php if($company->photo) : ?>
+                    <img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo ) ?>" class="mx-auto d-block">
+                <?php  endif; ?>
+
+								
+
+								
+							</div>
+						</div>
 
 						<!-- add content here -->
 						<div class="card card-primary">

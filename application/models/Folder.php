@@ -44,10 +44,10 @@ class Folder extends CI_Model {
         }
 
         $folderPass = $this->generateDirName();
-        $hash    = password_hash($folderPass, PASSWORD_DEFAULT);
+        $hash       = password_hash($folderPass, PASSWORD_DEFAULT);
 
         $data['hash'] = $hash;
-        $data['pass'] = $folderPass;
+        $data['password'] = $folderPass;
 
         $this->db->insert($this->table, $data);
     }
@@ -57,7 +57,7 @@ class Folder extends CI_Model {
     }
 
     public function auth($folder, $pass) {
-        return $this->db->where('name', $folder)->where('pass', $pass)->get($this->table)->row();
+        return $this->db->where('name', $folder)->where('password', $pass)->get($this->table)->row();
     }
 
     public function delete($folder) {
@@ -87,14 +87,14 @@ class Folder extends CI_Model {
                     a.id, 
                     a.name, 
                     a.created_at,
-                    a.pass,
+                    a.password,
                     a.active, 
                     count(b.id) as num_files,
                     sum(b.size) as size
                 ')
                 ->from($this->table . ' a')
                 ->join('files b', 'a.id = b.fk_folder', 'left')
-                ->group_by('a.id, a.name, a.active, a.created_at, a.pass');
+                ->group_by('a.id, a.name, a.active, a.created_at, a.password');
     }
 
     public function folderExists($dirname) {

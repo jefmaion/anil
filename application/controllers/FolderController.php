@@ -15,6 +15,7 @@ class FolderController extends CI_Controller {
 
         $this->load->model('Folder', 'folder');
         $this->load->model('File', 'file');
+        $this->load->model('Company', 'company');
     }
 
 	public function index()
@@ -25,13 +26,15 @@ class FolderController extends CI_Controller {
             return;
         }
 
+        $company = $this->company->list();
+
         $count = $this->folder->count();
         $files = $this->file->count();
         $downloads = $this->file->countDownloads();
 
         $size = $this->folder->totalSize();
 
-		$this->load->view('admin/index', compact('count', 'files', 'downloads', 'size'));
+		$this->load->view('admin/index', compact('count', 'files', 'downloads', 'size', 'company'));
 	}
 
     public function export() {
@@ -162,12 +165,15 @@ class FolderController extends CI_Controller {
         $button = '<a name="" id="" class="btn btn-%s btn-sm" href="%s" role="button">%s</a> ';
 
         foreach($folders as $folder) {
+
+            $url = base_url('exames?usr=') . $folder->name;
+
             $data[] = [
                 'folder' => '<b>' . $folder->name . '</b>',
-                'pass' => $folder->pass,
+                'pass' => $folder->password,
                 'size' => formatBytes($folder->size),
                 'files' => $folder->num_files,
-                'url' => anchor(base_url('exames/'.$folder->name), base_url('exames/'.$folder->name), ['target' => '_blank']),
+                'url' => anchor($url, $url, ['target' => '_blank']),
                 'action' => sprintf($button, 'primary', base_url('admin/folder/'.$folder->id.'/show'), '<i class="fa fa-file" aria-hidden="true"></i> Arquivos') 
                             . 
                             deleteButton($folder->id, base_url('admin/folder/'.$folder->id.'/delete'))

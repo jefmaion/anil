@@ -7,6 +7,7 @@ class ExamController extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Folder', 'folder');
+        $this->load->model('Company', 'company');
         
     }
 
@@ -16,15 +17,19 @@ class ExamController extends CI_Controller {
             
         }
 
-        return $this->load->view('exams/auth', compact('folder'));
+        $company = $this->company->list();
+
+        return $this->load->view('exams/auth', compact('folder', 'company'));
     }
 
     public function auth() {
         $data = $this->input->post();
 
+      
+
         if(!$folder = $this->folder->auth($data['folder'], $data['password'])) {
             $this->session->set_flashdata('error','Pasta ou senha inválidos');
-            return redirect('/exames/' . $data['folder'], 'refresh');
+            return redirect('/exames?usr=' . $data['folder'], 'refresh');
         }
 
         $this->session->set_userdata('user_folder', $folder);
@@ -41,18 +46,20 @@ class ExamController extends CI_Controller {
             return redirect('/exames/' . $folder, 'refresh');
         }
 
+        $company = $this->company->list();
+
 
         $barTitle = 'Exames';
         $files = [];
 
         if(!$folder = $this->folder->findByName($folder)) {
-            return $this->load->view('exams/index', compact('files', 'barTitle'));
+            return $this->load->view('exams/index', compact('files', 'barTitle'. 'company'));
         }
 
         
         $files    =  $this->folder->files($folder->id);
 
-        return $this->load->view('exams/index', compact('files', 'barTitle'));
+        return $this->load->view('exams/index', compact('files', 'barTitle', 'company'));
 
 
 

@@ -26,8 +26,21 @@
                 <h4>Exames</h4>
               </div>
               <div class="card-body">
+                <?php if($company->photo) : ?>
+                    <img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo ) ?>" class="img-fluid mx-auto d-block">
+                <?php  endif; ?>
+
+                <br>
+              
                 <form method="POST" action="<?= base_url('exames/auth') ?>" class="needs-validation" novalidate="">
-                <input type="hidden" name="folder" value="<?= $folder->name ?>">
+
+                <div class="form-group">
+                    <label for="email">Usuário</label>
+                    <input id="email" type="folder" class="form-control" value="<?= $this->input->get('usr') ?>" name="folder" tabindex="1" required autofocus>
+                    <div class="invalid-feedback">
+                      Por favor, digite o usuário
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="d-block">
                       <label for="password" class="control-label">Senha</label>

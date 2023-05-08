@@ -17,7 +17,7 @@ class User extends CI_Model {
 
         // $pass = $this->encryption->encrypt($pass);
 
-        $user  = $this->db->select('name, email, is_admin, pass')->where('email', $email)->get($this->table)->row();
+        $user  = $this->db->select('name, email, is_admin, password')->where('email', $email)->get($this->table)->row();
         
 
         if(!$user) {
@@ -25,7 +25,7 @@ class User extends CI_Model {
         }
 
 
-        if(password_verify($pass, $user->pass)) {
+        if(password_verify($pass, $user->password)) {
             return $user;
         }
 

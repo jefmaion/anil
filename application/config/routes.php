@@ -68,11 +68,15 @@ $route['admin/folder/reset'] = 'FolderController/reset';
 $route['admin/folder/export'] = 'FolderController/export';
 
 
+$route['admin/company/create']['post'] = 'CompanyController/create';
+$route['admin/company/(:num)/update']['post'] = 'CompanyController/update/$1';
+
+
 $route['admin/file/(:num)/delete']['post'] = 'FileController/delete/$1';
 $route['admin/file/(:num)/download'] = 'FileController/download/$1';
 
 $route['exames/auth']['post'] = 'ExamController/auth';
-$route['exames/(:any)'] = 'ExamController/index/$1';
+$route['exames'] = 'ExamController/index/$1';
 $route['exames/(:any)/show'] = 'ExamController/show/$1';
 
 $route['exames/(:num)/download'] = 'ExamController/download/$1';
