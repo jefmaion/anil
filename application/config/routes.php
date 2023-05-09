@@ -53,7 +53,7 @@ $route['default_controller'] = 'AuthController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['exames/(:any)'] = 'ExamController/index/$1';
+
 
 $route['auth'] = 'AuthController/index';
 $route['logout'] = 'AuthController/logout';
@@ -79,5 +79,5 @@ $route['admin/file/(:num)/download'] = 'FileController/download/$1';
 $route['exames/auth']['post'] = 'ExamController/auth';
 
 $route['exames/(:any)/show'] = 'ExamController/show/$1';
-
+$route['exames/(:any)'] = 'ExamController/index/$1';
 $route['exames/(:num)/download'] = 'ExamController/download/$1';

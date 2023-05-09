@@ -29,7 +29,7 @@ class ExamController extends CI_Controller {
 
         if(!$folder = $this->folder->auth($data['folder'], $data['password'])) {
             $this->session->set_flashdata('error','Pasta ou senha inválidos');
-            return redirect('/exames?usr=' . $data['folder'], 'refresh');
+            return redirect('/exames/' . $data['folder'], 'refresh');
         }
 
         $this->session->set_userdata('user_folder', $folder);
