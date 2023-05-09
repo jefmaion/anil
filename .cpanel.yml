@@ -1,6 +1,0 @@
----
-deployment:
- tasks:
- - export DEPLOYPATH=/home/user/public_html/qa
- - /bin/cp index.html $DEPLOYPATH
- - /bin/cp style.css $DEPLOYPATH
