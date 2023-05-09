@@ -30,7 +30,7 @@ class FolderController extends CI_Controller {
 
         $count = $this->folder->count();
         $files = $this->file->count();
-        $downloads = $this->file->countDownloads();
+        $downloads = $this->file->countDownloads(); 
 
         $size = $this->folder->totalSize();
 
