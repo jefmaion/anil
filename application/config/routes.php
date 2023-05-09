@@ -53,7 +53,11 @@ $route['default_controller'] = 'AuthController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
+$route['setup/login'] = 'SetupController/index';
+$route['setup/auth'] = 'SetupController/auth';
+$route['setup'] = 'SetupController/show';
+$route['setup/store']['post'] = 'SetupController/store';
+$route['setup/logout'] = 'SetupController/logout';
 
 $route['auth'] = 'AuthController/index';
 $route['logout'] = 'AuthController/logout';

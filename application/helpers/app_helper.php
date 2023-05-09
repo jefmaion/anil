@@ -9,6 +9,42 @@ function auth() {
 
 }
 
+
+function setupSave($data) {
+    $ci =& get_instance();
+   
+    $ci->load->helper('file');
+
+    $data = json_encode($data);
+
+    if (!write_file('application/config/config.env', $data))
+    {
+        return false;
+    }
+    
+    return true;
+}
+
+function setupKey($key, $default='') {
+    if(!$config = setupGet()) {
+        return false;
+    }
+
+    if(isset($config->{$key})) {
+        return $config->{$key};
+    }
+
+    return $default;
+}
+
+function setupGet() {
+    if(!file_exists('application/config/config.env')) {
+        return false;   
+    }
+
+    return json_decode(file_get_contents('application/config/config.env'));
+}
+
 function formatBytes($bytes, $precision = 2) {
     $bytes = $bytes * 1024;
     $unit = ["B", "KB", "MB", "GB"];
@@ -16,18 +52,18 @@ function formatBytes($bytes, $precision = 2) {
     return round($bytes / (pow(1024, $exp)), $precision).' '.$unit[$exp];
 }
 
-function imageProfile($image, $default='no-photo.png') {
+function imageProfile($image, $default='no-photo.jpg') {
     
     $dir = 'public/img/';
 
     if(!$image) {
-        $image = $dir . 'no-photo.png';
+        $image = $dir . 'no-photo.jpg';
     }
 
     $image = $dir . $image;
     
     if(!file_exists($image)) {
-        $image = $dir . 'no-photo.png';
+        $image = $dir . 'no-photo.jpg';
     }
 
 

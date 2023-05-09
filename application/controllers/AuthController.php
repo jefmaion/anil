@@ -18,7 +18,7 @@ class AuthController extends CI_Controller
 
     public function index()
     {
-        
+       
         return $this->load->view('auth/login');
     }
 

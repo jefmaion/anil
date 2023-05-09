@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-	<title>:: Anil Exames ::</title>
+	<title><?= $this->config->item('env_app_name') ?: '' ?> - Meus Exames</title>
 	<?php $this->load->view('template/parts/header') ?>
 
 </head>

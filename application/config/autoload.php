@@ -103,7 +103,12 @@ $autoload['helper'] = array('url', 'app', 'form');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$envfile = '';
+if(file_exists('application/config/environment.php')) {
+    $envfile = 'environment';
+}
+
+$autoload['config'] = array($envfile);
 
 /*
 | -------------------------------------------------------------------

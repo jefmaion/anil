@@ -53,7 +53,20 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+
+
+
+ $env = 'development';
+
+if(file_exists('application/config/environment.php')) {
+	require_once('application/config/environment.php');
+	if(isset($config['env_environment'])) {
+		$env = $config['env_environment'];
+	}
+}
+
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $env);
+
 /*
 
  *---------------------------------------------------------------

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$config['setup_pass'] = '$2y$10$PLbtx0bmybnuMii.e9.gt.eqK7py2OCuIoQ4DMVxS3bHtW9xuQcJK';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
