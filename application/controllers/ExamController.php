@@ -25,7 +25,6 @@ class ExamController extends CI_Controller {
     public function auth() {
         $data = $this->input->post();
 
-      
 
         if(!$folder = $this->folder->auth($data['folder'], $data['password'])) {
             $this->session->set_flashdata('error','Pasta ou senha inválidos');
@@ -37,9 +36,6 @@ class ExamController extends CI_Controller {
         redirect('/exames/'.$data['folder'].'/show');
     }
 
-
-
-
 	public function show($folder)
 	{
         if(!$this->session->userdata('user_folder')) {
@@ -48,30 +44,18 @@ class ExamController extends CI_Controller {
 
         $company = $this->company->list();
 
-
-        $barTitle = 'Exames';
-        $files = [];
-
         if(!$folder = $this->folder->findByName($folder)) {
-            return $this->load->view('exams/index', compact('files', 'barTitle'. 'company'));
+            return responseRedirect('/exames/wrong', 'Pasta ou senha inválidos', 'error');
         }
 
-        
         $files    =  $this->folder->files($folder->id);
 
-        return $this->load->view('exams/index', compact('files', 'barTitle', 'company'));
-
-
-
+        return $this->load->view('exams/index', compact('files', 'company'));
 	}
 
     public function download($id) {
         $file = $this->file->find($id);
-
-        $this->file->addLogDownload($file);
-
-        $this->load->helper('download');
-        return force_download('files/' . $file->fullpath, NULL);
+        return $this->file->downloadFile($file);
     }
 
    

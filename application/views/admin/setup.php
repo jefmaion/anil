@@ -33,6 +33,14 @@
                                 <?php $this->load->view('template/parts/alerts') ?>
 
                                 <form method="POST" action="<?= base_url('setup/store') ?>">
+                                    <p><b>Ambiente</b></p>
+                                    <div class="form-group">
+                                        <select class="form-control" name="env_environment" id="">
+                                            <option value="development" <?= ($this->config->item('env_environment') === 'development') ? 'selected' : '' ?>>Desenvolvimento</option>
+                                            <option value="production" <?= ($this->config->item('env_environment') === 'production') ? 'selected' : '' ?>>Produção</option>
+                                        </select>
+                                    </div>
+
                                     <p><b>Nome da Aplicação/Cliente</b></p>
 
                                     <div class="row">
@@ -41,13 +49,7 @@
                                         </div>
                                     </div>
 
-                                    <p><b>Ambiente</b></p>
-                                    <div class="form-group">
-                                        <select class="form-control" name="env_environment" id="">
-                                            <option value="development" <?= ($this->config->item('env_environment') === 'development') ? 'selected' : '' ?>>Desenvolvimento</option>
-                                            <option value="production" <?= ($this->config->item('env_environment') === 'production') ? 'selected' : '' ?>>Produção</option>
-                                        </select>
-                                    </div>
+                                    
                                     <p><b>Banco de dados</b></p>
 
                                     <div class="row">

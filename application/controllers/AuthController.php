@@ -18,7 +18,6 @@ class AuthController extends CI_Controller
 
     public function index()
     {
-       
         return $this->load->view('auth/login');
     }
 
@@ -26,22 +25,16 @@ class AuthController extends CI_Controller
     {
         $data = $this->input->post();
 
-        if (!$user = $this->user->auth($data['email'], $data['password'])) {
-            $this->session->set_flashdata('error', 'Usuário ou Senha Inválidos');
-            return redirect('auth');
+        if (!$this->user->auth($data['email'], $data['password'])) {
+            return responseRedirect('auth', 'Usuário ou senha Inválidos', 'warning');
         }
-
-        $this->session->set_userdata('user', $user);
 
         redirect('admin');
     }
 
     function logout()
     {
-        $data = $this->session->all_userdata();
-        foreach ($data as $row => $rows_value) {
-            $this->session->unset_userdata($row);
-        }
+        $this->user->logout();
         redirect('auth');
     }
 }

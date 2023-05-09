@@ -11,7 +11,7 @@ class Migrate extends CI_Controller {
         {
             echo $this->migration->error_string();
         }else{
-            echo "Table Migrated Successfully.";
+            return responseRedirect('/setup', 'Configurações Salvas Com Sucesso!');
         }
     }
 

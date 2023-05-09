@@ -15,24 +15,28 @@ class User extends CI_Model {
 
     public function auth($email, $pass) {
 
-        // $pass = $this->encryption->encrypt($pass);
-
         $user  = $this->db->select('name, email, is_admin, password')->where('email', $email)->get($this->table)->row();
-        
 
+        $this->session->set_flashdata('auth_email', $email);
+        
         if(!$user) {
             return false;
         }
 
-
-        if(password_verify($pass, $user->password)) {
-            return $user;
+        if(!password_verify($pass, $user->password)) {
+            return false;    
         }
 
-        
+        $this->session->set_userdata('user', $user);
+        return true;
 
-        return false;
+    }
 
+    public function logout() {
+        $data = $this->session->all_userdata();
+        foreach ($data as $row => $rows_value) {
+            $this->session->unset_userdata($row);
+        }
     }
 
 }

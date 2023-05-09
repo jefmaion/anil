@@ -16,18 +16,8 @@ class CompanyController extends CI_Controller {
 
     public function create() {
 
-        $data = $this->input->post();
-
-        if(isset($_FILES['photo'])) {
-            $config['upload_path']          = 'public/img/';
-            $config['allowed_types']        = 'gif|jpg|png';
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('photo'))
-            {
-                $file = $this->upload->data();
-                $data['photo'] = $file['file_name'];
-            }
-        }
+        $data          = $this->input->post();
+        $data['photo'] = $this->uploadImage();
 
         $this->company->create($data);
 
@@ -37,7 +27,14 @@ class CompanyController extends CI_Controller {
     }
 
 	public function update($id) {
-        $data = $this->input->post();
+        $data          = $this->input->post();
+        $data['photo'] = $this->uploadImage($id);
+        
+        $this->company->update($id, $data);
+        return redirect('admin');
+    }
+
+    private function uploadImage($id=0) {
 
         $company = $this->company->find($id);
 
@@ -51,22 +48,19 @@ class CompanyController extends CI_Controller {
                 }
             }
 
-           
-
-            
-
             $config['upload_path']          = 'public/img/';
             $config['allowed_types']        = 'gif|jpg|png';
+
             $this->load->library('upload', $config);
+            
             if ($this->upload->do_upload('photo'))
             {
                 $file = $this->upload->data();
-                $data['photo'] = $file['file_name'];
+                return  $file['file_name'];
             }
+
+            return null;
         }
-        
-        $this->company->update($id, $data);
-        return redirect('admin');
     }
 
     

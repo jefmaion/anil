@@ -39,6 +39,11 @@ class Folder extends CI_Model {
     }
 
     public function create($data) {
+
+        if($this->folderExists($data['name'])) {
+            return false;
+        }
+
         if(!mkdir('files/' . $data['name'] , 0777)) {
             return false;
         }

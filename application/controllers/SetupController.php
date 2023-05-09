@@ -40,37 +40,19 @@ class SetupController extends CI_Controller
     public function store() {
         $this->load->helper('file');
 
-
-   
         $txt = '<?php '.PHP_EOL.PHP_EOL;
-
         foreach($this->input->post() as $key => $value) {
             $txt .= '$config["'.$key.'"] =  "'.$value.'"; '.PHP_EOL;
         }
-
         $txt .= PHP_EOL . '?>';
+
         write_file('application/config/environment.php', $txt);
 
-
-
-
         if($this->input->post('run_migration')) {
-            $this->load->dbforge();
-            $this->dbforge->drop_table('migrations', TRUE);
-    
-            $this->load->library('migration');
-            
-            if ($this->migration->current() === FALSE)
-            {
-                // echo $this->migration->error_string();
-            }else{
-                // echo "Table Migrated Successfully.";
-            }
+            return redirect('migrate');
         }
         
-
-        $this->session->set_flashdata('success','Configurações Salvas Com Sucesso!');
-        return redirect('setup');
+        return responseRedirect('/setup', 'Configurações Salvas Com Sucesso!');
 
     }
 

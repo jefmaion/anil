@@ -12,7 +12,6 @@ class File extends CI_Model {
 
     }
 
-
     public function find($id) {
         return $this->query()->where('a.id', $id)->get()->row();
     }
@@ -25,13 +24,22 @@ class File extends CI_Model {
         return $this->db->from('downloads a')->join($this->table . ' b', 'b.id = a.file_id', 'inner')->count_all_results();
     }
 
-
     public function create($data) {
         return $this->db->insert($this->table, $data);
     }
 
-    public function delete($file) {
+    public function downloadFile($file, $addLog=true) {
+      
+        if($addLog) {
+            $this->addLogDownload($file);
+        }
+        
+        $this->load->helper('download');
 
+        return force_download('files/' . $file->fullpath, NULL);
+    }
+
+    public function delete($file) {
 
         $filepath = 'files/' . $file->folder .'/'. $file->name;
 

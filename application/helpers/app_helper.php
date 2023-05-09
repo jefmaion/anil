@@ -9,6 +9,18 @@ function auth() {
 
 }
 
+function setFlash($message=null, $status='success') {
+    if($message) {
+        $ci =& get_instance();
+        $ci->session->set_flashdata($status, $message);
+    }
+}
+
+function responseRedirect($route, $message=null,  $status='success') {
+    setFlash($message, $status);
+    return redirect($route);
+}
+
 
 function setupSave($data) {
     $ci =& get_instance();
