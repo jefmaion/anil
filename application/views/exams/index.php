@@ -31,13 +31,17 @@
 							<div class="card-body">
 
 								<div class="row">
-									<div class="col-2">
-
-										<?php if ($company->photo) : ?>
-											<img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo) ?>" class="img-fluid mx-auto d-block">
-										<?php endif; ?>
-									</div>
+				
 									<div class="col">
+
+									<?php if ($company && isset($company->photo)) : ?>
+
+										
+											<img alt="image" height="200px" src="<?= imageProfile(($company) ? $company->photo : null) ?>" class="img-fluid mx-auto d-block">
+
+									<?php endif; ?>
+
+
 										<?php if ($files) : ?>
 
 

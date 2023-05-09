@@ -20,12 +20,12 @@
     <section class="section">
       <div class="container mt-5">
         <div class="row align-items-center vh-100">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card">
 
               <div class="card-body">
-                <?php if ($company->photo) : ?>
-                  <img alt="image" height="200px" src="<?= base_url('public/img/' . $company->photo) ?>" class="img-fluid mx-auto d-block">
+                <?php if ($company) : ?>
+                  <img alt="image" height="200px" src="<?= imageProfile(($company) ? $company->photo : null) ?>" class="img-fluid mx-auto d-block">
                 <?php endif; ?>
 
                 <br>

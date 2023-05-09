@@ -166,7 +166,7 @@ class FolderController extends CI_Controller {
 
         foreach($folders as $folder) {
 
-            $url = base_url('exames?usr=') . $folder->name;
+            $url = base_url('exames/') . $folder->name;
 
             $data[] = [
                 'folder' => '<b>' . $folder->name . '</b>',
