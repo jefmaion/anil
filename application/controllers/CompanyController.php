@@ -49,7 +49,7 @@ class CompanyController extends CI_Controller {
             }
 
             $config['upload_path']          = 'public/img/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
 
             $this->load->library('upload', $config);
             
