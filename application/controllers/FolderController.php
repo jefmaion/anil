@@ -21,7 +21,7 @@ class FolderController extends CI_Controller
 
     public function index()
     {
-
+        
         if ($this->input->is_ajax_request()) {
             echo $this->datatable();
             return;

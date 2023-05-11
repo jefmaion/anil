@@ -70,29 +70,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-
-$ci       = get_instance();
-// $server   = ($ci->config->item('env_db_server')) ? $ci->config->item('env_db_server') : 'localhost';
-// $username = ($ci->config->item('env_db_user'))   ? $ci->config->item('env_db_user')   : 'root';
-// $password = ($ci->config->item('env_db_pass'))   ? $ci->config->item('env_db_pass')   : '';
-// $database = ($ci->config->item('env_db_name'))   ? $ci->config->item('env_db_name')   : 'exames';
-
-$server   = ($ci->config->item('env_db_server')) ? $ci->config->item('env_db_server') : 'localhost';
-$username = ($ci->config->item('env_db_user'))   ? $ci->config->item('env_db_user')   : '';
-$password = ($ci->config->item('env_db_pass'))   ? $ci->config->item('env_db_pass')   : '';
-$database = ($ci->config->item('env_db_name'))   ? $ci->config->item('env_db_name')   : '';
-
-
-
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => $server,
-	'username' => $username,
-	'password' => $password,
-	'database' => $database,
+	'hostname' => env('DB_HOST'),
+	'username' => env('DB_USERNAME'),
+	'password' => env('DB_PASSWORD'),
+	'database' => env('DB_DATABASE'),
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -109,25 +95,3 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-
-// $db['host'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => 'localhost',
-// 	'username' => 'anilcom_root',
-// 	'password' => 'anil4rfv5tgb',
-// 	'database' => 'anilcom_exams',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );

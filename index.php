@@ -1,4 +1,8 @@
 <?php
+require 'vendor/autoload.php';
+
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
 /**
  * CodeIgniter
  *
@@ -56,16 +60,7 @@
 
 
 
- $env = 'development';
-
-if(file_exists('application/config/environment.php')) {
-	require_once('application/config/environment.php');
-	if(isset($config['env_environment'])) {
-		$env = $config['env_environment'];
-	}
-}
-
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $env);
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : ( $_ENV['APP_ENV'] ?? 'development' ));
 
 /*
 

@@ -9,6 +9,10 @@ function auth() {
 
 }
 
+function env($key) {
+    return $_ENV[$key] ?? null;
+}
+
 function setFlash($message=null, $status='success') {
     if($message) {
         $ci =& get_instance();

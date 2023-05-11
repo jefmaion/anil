@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title><?= $this->config->item('env_app_name') ?: '' ?></title>
+    <title><?= env('APP_NAME') ?: '' ?></title>
     <!-- General CSS Files -->
     <?php $this->load->view('template/parts/header') ?>
     <link rel="stylesheet" href="assets/bundles/bootstrap-social/bootstrap-social.css">
@@ -45,7 +45,7 @@
 
                                     <div class="row">
                                         <div class="form-group col-12">
-                                            <input type="text" class="form-control" name="env_app_name" value="<?= $this->config->item('env_app_name') ?>">
+                                            <input type="text" class="form-control" name="env_app_name" value="<?= env('APP_NAME') ?: '' ?>">
                                         </div>
                                     </div>
 
