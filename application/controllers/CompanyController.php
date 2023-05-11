@@ -40,7 +40,7 @@ class CompanyController extends CI_Controller {
 
         if(isset($_FILES['photo'])) {
 
-            if($company) {
+            if($company && !empty($company->photo)) {
                 $photo = 'public/img/' . $company->photo;
 
                 if(file_exists($photo)) {
