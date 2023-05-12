@@ -9,4 +9,4 @@
     <link rel="stylesheet" href="<?= base_url('public/template/assets/css/components.css') ?>">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="<?= base_url('public/template/assets/css/custom.css?t=' . date('s')) ?>">
-    <link rel='shortcut icon' type='image/x-icon' href='<?= base_url("public/template/assets/img/favicon.ico") ?>' />
+    <!-- <link rel='shortcut icon' type='image/x-icon' href='<?= base_url("public/template/assets/img/favicon.ico") ?>' /> -->

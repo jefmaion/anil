@@ -27,6 +27,7 @@ class FolderController extends CI_Controller
             return;
         }
 
+        
         $company   = $this->company->list();
         $count     = $this->folder->count();
         $files     = $this->file->count();
@@ -141,7 +142,8 @@ class FolderController extends CI_Controller
                         'name'      => $file['file_name'],
                         'size'      => $file['file_size'],
                         'extension' => $file['file_ext'],
-                        'filetype'  => $file['file_type']
+                        'filetype'  => $file['file_type'],
+                        'file_hash' => md5(uniqid(time() . $file['file_name'], true))
                     ]);
 
                     $data[] = $file;

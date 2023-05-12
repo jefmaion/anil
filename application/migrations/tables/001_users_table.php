@@ -49,14 +49,9 @@ class Users_Table extends CI_Migration {
     public function seeder() {
         return $this->db->insert_batch('users', [
             [
-                'name' => 'Jefferson Maion',
-                'email' => 'jefmaion@hotmail.com',
-                'password' => password_hash('123123123', PASSWORD_DEFAULT)
-            ],
-            [
-                'name' => 'Jefferson Maglio',
-                'email' => 'jefferson@maglio.com.br',
-                'password' => password_hash('646369051Brasil', PASSWORD_DEFAULT)
+                'name'     => env('ADM_NAME')    ?: 'Admin',
+                'email'    => env('ADM_EMAIL')   ?: 'admin@admin.com',
+                'password' => (env('ADM_PASS'))  ? password_hash(env('ADM_PASS'), PASSWORD_DEFAULT) : password_hash('3edc4rfv', PASSWORD_DEFAULT)
             ]
         ]);
     }

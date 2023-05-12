@@ -39,7 +39,7 @@ class ExamController extends CI_Controller {
 	public function show($folder)
 	{
         if(!$this->session->userdata('user_folder')) {
-            return redirect('/exames/' . $folder, 'refresh');
+            return redirect('/exames/auth', 'refresh');
         }
 
         $company = $this->company->list();
@@ -48,14 +48,36 @@ class ExamController extends CI_Controller {
             return responseRedirect('/exames/wrong', 'Pasta ou senha inválidos', 'error');
         }
 
-        $files    =  $this->folder->files($folder->id);
+        $files = $this->folder->files($folder->id);
 
         return $this->load->view('exams/index', compact('files', 'company'));
 	}
 
-    public function download($id) {
-        $file = $this->file->find($id);
+    public function download($folder, $hash) {
+
+        if(!$this->session->userdata('user_folder')) {
+            return redirect('/exames/' . $folder, 'refresh');
+        }
+
+        if(!$file = $this->file->findByHash($hash)) {
+            return responseRedirect('/exames/' . $folder . '/show', 'Arquivo não encontrado', 'error');
+        }
+
         return $this->file->downloadFile($file);
+    }
+
+    public function view($folder, $hash) {
+
+
+        if(!$this->session->userdata('user_folder')) {
+            return redirect('/exames/' . $folder, 'refresh');
+        }
+
+        if(!$file = $this->file->findByHash($hash)) {
+            return responseRedirect('/exames/' . $folder . '/show', 'Arquivo não encontrado', 'error');
+        }
+
+        return $this->file->showFile($file);
     }
 
    

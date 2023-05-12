@@ -47,6 +47,12 @@ class Files_Table extends CI_Migration {
                 'constraint' => '500'
             ],
 
+            'file_hash' => [
+                'type' => 'VARCHAR',
+                'constraint' => '1000',
+                'null' => true,
+            ],
+
             'active' => [
                 'type' => 'INT',
                 'null' => true,

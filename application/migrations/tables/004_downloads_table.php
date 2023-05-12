@@ -17,17 +17,19 @@ class Downloads_Table extends CI_Migration {
 
             'created_at DATETIME default NOW()',
 
-          
-
             'filename' => [
                 'type' => 'VARCHAR',
                 'constraint' => '500'
             ],
 
-            
             'file_id' => [
                 'type' => 'INT',
                 'null' => true,
+            ],
+
+            'action' => [
+                'type' => 'VARCHAR',
+                'constraint' => '1'
             ],
         ]);
         

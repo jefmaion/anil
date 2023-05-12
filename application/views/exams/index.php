@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-	<title><?= env('APP_NAME') ?: '' ?> - Meus Exames</title>
+	<title><?= env('APP_NAME') ?: '' ?> :: Meus Exames</title>
 	<?php $this->load->view('template/parts/header') ?>
 
 </head>
@@ -42,6 +42,7 @@
 									<?php endif; ?>
 
 
+									<?php $this->load->view('template/parts/alerts') ?>
 										<?php if ($files) : ?>
 
 
@@ -66,9 +67,14 @@
 																<td><?= formatBytes($file->size) ?></td>
 																<td>
 
-																	<a name="" id="" class="btn btn-primary btn-sm" href="<?= base_url('exames/' . $file->id . '/download') ?>" role="button">
+																	<a name="" id="" class="btn btn-primary btn-sm" href="<?= base_url('exames/'.$file->folder.'/' . $file->file_hash . '/download') ?>" role="button">
 																		<i class="fas fa-download    "></i>
 																		Download
+																	</a>
+
+																	<a name="" id="" target="_blank" class="btn btn-primary btn-sm" href="<?= base_url('exames/'.$file->folder.'/'  . $file->file_hash . '/view') ?>" role="button">
+																		<i class="fas fa-eye    "></i>
+																		Visualizar
 																	</a>
 
 

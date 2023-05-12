@@ -84,4 +84,5 @@ $route['exames/auth']['post'] = 'ExamController/auth';
 
 $route['exames/(:any)/show'] = 'ExamController/show/$1';
 $route['exames/(:any)'] = 'ExamController/index/$1';
-$route['exames/(:num)/download'] = 'ExamController/download/$1';
+$route['exames/(:any)/(:any)/download'] = 'ExamController/download/$1/$2';
+$route['exames/(:any)/(:any)/view'] = 'ExamController/view/$1/$2';

@@ -23,6 +23,9 @@ class AuthController extends CI_Controller
 
     public function auth()
     {
+
+        $this->migrate();
+
         $data = $this->input->post();
 
         if (!$this->user->auth($data['email'], $data['password'])) {
@@ -36,5 +39,27 @@ class AuthController extends CI_Controller
     {
         $this->user->logout();
         redirect('auth');
+    }
+
+
+    private function migrate() {
+
+        $this->load->database();
+
+        if($this->db->table_exists('folders')) {
+            return;
+        }
+
+        $this->load->dbforge();
+        $this->dbforge->drop_table('migrations', TRUE);
+
+        $this->load->library('migration');
+        
+        if ($this->migration->current() === FALSE)
+        {
+            echo $this->migration->error_string();
+        }else{
+            return true;
+        }
     }
 }

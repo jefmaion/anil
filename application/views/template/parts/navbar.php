@@ -5,7 +5,7 @@
     <ul class="navbar-nav mr-3 text-white">
       <li>
         <!-- <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"> <i data-feather="align-justify"></i></a> -->
-        <h4>Anil <?= (isset($barTitle)) ? $barTitle :  '- Área Administrativa'  ?></h4>
+        <h4><?= env('APP_NAME') ?><?= (isset($barTitle)) ? $barTitle :  ''  ?></h4>
       </li>
       <!-- <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                 <i data-feather="maximize"></i>

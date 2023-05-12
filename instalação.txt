@@ -1,4 +1,0 @@
-1 - Criar o banco de dados no servidor.
-2 - Descompactar o conteudo do do arquivo na pasta do servidor
-3 - Acessar a url http://seuserver.com.br/setup e fazer o login com a senha do host
-4 - Configurar os dados de banco de dados
