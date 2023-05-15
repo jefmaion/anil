@@ -13,6 +13,24 @@ class User extends CI_Model {
 
     }
 
+    public function list() {
+        return $this->db->where('is_admin', 0)->get($this->table)->result();
+    }
+
+    public function findByEmail($email) {
+        return $this->db->where('email', $email)->count_all_results($this->table);
+    }
+
+    public function store($data) {
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        return $this->db->insert($this->table, $data);
+    }
+
+    public function delete($id) {
+        return $this->db->where('id', $id)->delete($this->table);
+    }
+
     public function auth($email, $pass) {
 
         $user  = $this->db->select('name, email, is_admin, password')->where('email', $email)->get($this->table)->row();

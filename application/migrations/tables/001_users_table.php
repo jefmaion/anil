@@ -46,14 +46,35 @@ class Users_Table extends CI_Migration {
         $this->dbforge->drop_table('users', true);
     }
 
-    public function seeder() {
-        return $this->db->insert_batch('users', [
-            [
-                'name'     => env('ADM_NAME')    ?: 'Admin',
-                'email'    => env('ADM_EMAIL')   ?: 'admin@admin.com',
-                'password' => (env('ADM_PASS'))  ? password_hash(env('ADM_PASS'), PASSWORD_DEFAULT) : password_hash('3edc4rfv', PASSWORD_DEFAULT)
-            ]
-        ]);
-    }
+    // public function seeder() {
+
+
+    //     $usersAdmin = [
+
+    //         [
+    //             'name' => 'Jefferson',
+    //             'email' => 'email@email.com',
+    //             'password' => 'password'
+    //         ],
+
+    //         [
+    //             'name' => 'Jefferson',
+    //             'email' => 'email@email.com',
+    //             'password' => 'password'
+    //         ],
+
+    //         // [
+    //         //     'name' => 'Outro Usuário',
+    //         //     'email' => 'email@email.com',
+    //         //     'password' => 'password'
+    //         // ],
+
+    //     ];
+
+    //     foreach($usersAdmin as $user) {
+    //         $user['password'] = password_hash($user['password'], PASSWORD_DEFAULT);
+    //         $this->db->insert('users', $user);
+    //     }
+    // }
 
 }

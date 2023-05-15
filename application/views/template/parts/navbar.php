@@ -27,6 +27,14 @@
 
     <?php if (auth()) : ?>
 
+      <?php if(auth()->is_admin == 1) : ?>
+      <li>
+        <a href="<?= base_url('admin/users') ?>"  class="nav-link nav-link-lg nav-link-user">
+          <i class="fas fa-users    "></i>
+        </a>
+      </li>
+      <?php endif; ?>
+
       <li class="dropdown">
 
         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -34,12 +42,14 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right pullDown">
           <div class="dropdown-title"><?= auth()->name ?></div>
+          
 
           <a href="<?= base_url('logout') ?>" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
             Logout
           </a>
         </div>
       </li>
+      
 
     <?php endif; ?>
 

@@ -62,6 +62,7 @@ $route['setup/logout'] = 'SetupController/logout';
 $route['auth'] = 'AuthController/index';
 $route['logout'] = 'AuthController/logout';
 $route['auth/login']['post'] = 'AuthController/auth';
+$route['auth/add']['post'] = 'AuthController/add';
 
 $route['admin'] = 'FolderController/index';
 
@@ -71,6 +72,11 @@ $route['admin/folder/(:num)/upload']['post'] = 'FolderController/upload/$1';
 $route['admin/folder/(:num)/delete']['post'] = 'FolderController/delete/$1';
 $route['admin/folder/reset'] = 'FolderController/reset';
 $route['admin/folder/export'] = 'FolderController/export';
+
+
+$route['admin/users'] = 'UserController/index';
+$route['admin/users/store']['post'] = 'UserController/store';
+$route['admin/users/(:num)/delete']['post'] = 'UserController/delete/$1';
 
 
 $route['admin/company/create']['post'] = 'CompanyController/create';

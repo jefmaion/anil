@@ -14,17 +14,35 @@ class AuthController extends CI_Controller
 
         $this->load->model('User', 'user');
         $this->load->library('encryption');
+
+        $this->load->database();
+
+        $this->migrate();
+    }
+
+    public function add() {
+        $data = $this->input->post();
+
+        if($this->user->store($data)) {
+            return $this->auth();
+        }
     }
 
     public function index()
     {
-        return $this->load->view('auth/login');
+
+        if($this->db->table_exists('users') && $this->db->count_all_results('users') > 0) {
+            return $this->load->view('auth/login');
+        }
+
+        return $this->load->view('auth/new');
+        
     }
 
     public function auth()
     {
 
-        $this->migrate();
+        
 
         $data = $this->input->post();
 
@@ -43,8 +61,6 @@ class AuthController extends CI_Controller
 
 
     private function migrate() {
-
-        $this->load->database();
 
         if($this->db->table_exists('folders')) {
             return;
