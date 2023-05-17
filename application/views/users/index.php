@@ -38,6 +38,7 @@
 
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modelId">
+                                            <i class="fas fa-user-plus    "></i> 
                                             Adicionar Usuário
                                         </button>
 
@@ -88,8 +89,11 @@
                                                         
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fas fa-times-circle    "></i> Fechar</button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fas fa-check    "></i>
+                                                            Adicionar
+                                                        </button>
                                                     </div>
                                                     </form>
                                                 </div>
@@ -115,7 +119,7 @@
                                                                 <td><?= $user->name ?></td>
                                                                 <td><?= $user->email ?></td>
                                                                 <td>
-                                                                    <a name="" id="" class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal-reset-<?= $user->id ?>">Excluir</a>
+                                                                    <a name="" id="" class="btn btn-danger" href="#" data-toggle="modal" data-target="#modal-reset-<?= $user->id ?>"> <i class="fas fa-trash-alt    "></i> Excluir</a>
                                                                     <div class="modal fade" id="modal-reset-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-centered" role="document">
 
@@ -131,8 +135,8 @@
                                                                                         Deseja Excluir esse usuário
                                                                                     </div>
                                                                                     <div class="modal-footer">
-                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times" aria-hidden="true"></i> Fechar</button>
-                                                                                        <button type="submit" class="btn btn-danger"> <i class="fas fa-check    "></i> Excluir</button>
+                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times-circle    "></i> Fechar</button>
+                                                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt    "></i>  Excluir</button>
                                                                                     </div>
                                                                                 </form>
                                                                             </div>

@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // define('APP_URL', ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . "://{$_SERVER['SERVER_NAME']}:{$_SERVER['SERVER_PORT']}".str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']));
-define('APP_URL', ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . "://" . $_SERVER['SERVER_NAME'] . ((!in_array($_SERVER['SERVER_PORT'], [443, 80, 8080])) ? ":" . $_SERVER['SERVER_PORT'] : '') .str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']));
+// define('APP_URL', ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . "://" . $_SERVER['SERVER_NAME'] . ((!in_array($_SERVER['SERVER_PORT'], [443, 80, 8080])) ? ":" . $_SERVER['SERVER_PORT'] : '') .str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']));
+define('APP_URL', ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . "://" . $_ENV['APP_URL']);
 
 
 /*
